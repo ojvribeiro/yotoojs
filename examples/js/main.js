@@ -2,9 +2,16 @@ import { yotoo } from '../../dist/yotoo.js'
 
 const videoContainer = document.querySelector('.video-container')
 
-// Steps to get an API key: https://stackoverflow.com/a/44399524/5125223
+/**
+  * First, you must create a project in the Google Developers Console and generate a new API key.
+  * Then, you must set the API key in the `yotoo.apiKey` variable.
+  *
+  * If you're using Webpack, you can set the API key in a `.env` file.
+  *
+  * @see https://stackoverflow.com/a/44399524/5125223
+ */
 
-yotoo.apiKey = 'YOUR_API_KEY_HERE'
+yotoo.apiKey = 'YOUR_API_KEY_HERE' // `process.env.MIX_YOUTUBE_API_KEY` (check the `.env.example` file)
 
 
 // Usage
