@@ -17,29 +17,56 @@
   <style>
     html, body {
       background-color: #202020;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2em;
+      font-weight: normal;
+      text-align: center;
     }
 
     .video-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: calc(100% - 32px);
-      width: 720px;
-      aspect-ratio: 16/9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .video-container iframe {
+      width: 480px;
+      aspect-ratio: 16/9;
       border: 0;
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+    }
+
+    .video-container img {
+      width: 240px;
+      border: 0;
+      max-width: 100%;
     }
   </style>
 </head>
 
 <body>
-  <div class="video-container"></div>
+  <div>
+    <h1>
+      Embedded video
+    </h1>
+
+    <div class="video-container --embed"></div>
+  </div>
+
+  <div>
+    <h1>
+      Thumbnails with video links
+    </h1>
+
+    <div class="video-container --thumbs"></div>
+  </div>
   
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/build/build.js"></script>
 </body>
 </html>
