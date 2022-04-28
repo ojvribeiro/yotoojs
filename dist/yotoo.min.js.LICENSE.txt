@@ -1,0 +1,5 @@
+/**
+  * YotooJS - YouTube Video Fetcher
+  * @author Victor Ribeiro <https://github.com/ojvribeiro>
+  * @licence MIT
+  */
