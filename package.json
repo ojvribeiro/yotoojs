@@ -2,8 +2,8 @@
   "name": "yotoojs",
   "version": "1.0.1-alpha",
   "description": "Tiny library to fetch videos from YouTube",
-  "main": "dist/yotoo",
-  "types": "dist/yotoo",
+  "main": "dist/yotoo.min.js",
+  "types": "dist/yotoo.min.js",
   "directories": {
     "example": "examples"
   },
@@ -15,5 +15,8 @@
     "video"
   ],
   "author": "Victor Ribeiro",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "laravel-mix": "^6.0.43"
+  }
 }
