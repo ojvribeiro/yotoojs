@@ -1,4 +1,4 @@
-import { yotoo } from '../../dist/yotoo.js'
+import { yotoo } from '../../js/yotoo.js' // or `import { yotoo } from 'yotoo'` if NPM
 
 const videoContainer = document.querySelector('.video-container')
 
@@ -14,12 +14,18 @@ const videoContainer = document.querySelector('.video-container')
 yotoo.apiKey = 'YOUR_API_KEY_HERE' // `process.env.MIX_YOUTUBE_API_KEY` (check the `.env.example` file)
 
 
-// Usage
+
+/**
+  * Usage:
+  * yotoo.get(videoURL, callbackFn(response))
+  * or
+  * yotoo.get({url: videoURL}, callbackFn(response))
+*/
 
 yotoo.get(
-  // First parameter is the video URL
   'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   
+  // First parameter is the video URL, or an object with the `url` property or an array of URLs
   // The second is callback function when video is loaded
   function (video) { // The video variable contains all the information about the video
     console.log('Video loaded:', video)
