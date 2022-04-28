@@ -2,7 +2,8 @@
   "name": "yotoojs",
   "version": "1.0.0",
   "description": "Tiny library to fetch videos from YouTube",
-  "main": "./dist/yotoo.js",
+  "main": "dist/yotoo",
+  "types": "dist/yotoo",
   "directories": {
     "example": "examples"
   },
