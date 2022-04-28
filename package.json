@@ -1,6 +1,6 @@
 {
   "name": "yotoojs",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha",
   "description": "Tiny library to fetch videos from YouTube",
   "main": "dist/yotoo",
   "types": "dist/yotoo",
