@@ -94,7 +94,7 @@ const yotoo = {
               hd: item.snippet.thumbnails.high.url,
             },
 
-            url: `https://www.youtube.com/?v=${item.id}`,
+            url: `https://www.youtube.com/watch?v=${item.id}`,
             shortUrl: `https://youtu.be/${item.id}`,
             embedUrl: `https://www.youtube.com/embed/${item.id}`,
           })
