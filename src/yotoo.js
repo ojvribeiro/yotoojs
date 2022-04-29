@@ -1,5 +1,6 @@
 /**
   * YotooJS - YouTube Video Fetcher
+  * @version 1.1.2
   * @author Victor Ribeiro <https://github.com/ojvribeiro>
   * @licence MIT
   */
@@ -13,7 +14,6 @@ const yotoo = {
   get: (props, callback) => {
     if (yotoo.apiKey && yotoo.apiKey !== '') {
       let videoArray = []
-      let videoUrl
 
       if (props instanceof Array) {
         props.forEach(item => {
@@ -24,8 +24,6 @@ const yotoo = {
       }
       else {
         if (typeof props === 'string') {
-          videoUrl = props
-
           const videoId = getVideoId(props)
 
           videoArray.push(videoId)
@@ -134,4 +132,4 @@ const yotoo = {
   }
 }
 
-export { yotoo }
+window.yotoo = yotoo
