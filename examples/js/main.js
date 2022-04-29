@@ -9,8 +9,8 @@ import { yotoo } from 'yotoojs'
   *
   * @see https://stackoverflow.com/a/44399524/5125223
  */
-yotoo.apiKey = 'YOUR_API_KEY_HERE'
-// yotoo.apiKey = process.env.MIX_YOUTUBE_API_KEY
+// yotoo.apiKey = 'YOUR_API_KEY_HERE'
+yotoo.apiKey = process.env.MIX_YOUTUBE_API_KEY
 
 
 
