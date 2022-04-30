@@ -19,8 +19,5 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "laravel-mix": "^6.0.43"
-  },
-  "dependencies": {
-    "yotoojs": "^1.1.2-alpha"
   }
 }
