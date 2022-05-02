@@ -83,6 +83,10 @@ let yotoo = {
 
             description: item.snippet.description,
 
+            channelTitle: item.snippet.channelTitle,
+
+            duration: item.contentDetails.duration,
+
             date: new Date(item.snippet.publishedAt),
 
             tags: item.snippet.tags,
@@ -96,6 +100,8 @@ let yotoo = {
             url: `https://www.youtube.com/watch?v=${item.id}`,
             shortUrl: `https://youtu.be/${item.id}`,
             embedUrl: `https://www.youtube.com/embed/${item.id}`,
+
+            embed: `<iframe src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
           })
         })
 
