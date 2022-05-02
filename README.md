@@ -1,6 +1,6 @@
 # YotooJS
 
-Tiny library to fetch videos from YouTube
+Tiny library to fetch videos from YouTube.
 
 ## Installation
 
