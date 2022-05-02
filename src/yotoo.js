@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
   * YotooJS - YouTube Video Fetcher
   * @version 1.1.2
