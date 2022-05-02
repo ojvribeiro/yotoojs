@@ -1,3 +1,8 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**********************!*\
+  !*** ./src/yotoo.js ***!
+  \**********************/
 // @ts-check
 
 /**
@@ -130,4 +135,6 @@ var yotoo = {
     });
   })
 };
-export { yotoo };
+window.yotoo = yotoo;
+/******/ })()
+;
