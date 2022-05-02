@@ -1,6 +1,6 @@
 # YotooJS
 
-![npm](https://img.shields.io/npm/v/yotoojs?color=d40416&style=for-the-badge)
+[![npm](https://img.shields.io/npm/v/yotoojs?color=d40416&style=for-the-badge)](https://www.npmjs.com/package/yotoojs)
 
 Tiny library to fetch videos from YouTube.
 
