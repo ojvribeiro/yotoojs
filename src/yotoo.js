@@ -9,65 +9,80 @@
 
 
 const yotoo = {
+
   /**
-    * @param {string|Object} props - The video URL or the options object
+    * @param {string} videoUrl - The video URL
+    */
+    getVideoIdFromUrl: videoUrl => {
+      const urlPattern = /(.*?)(?:youtube\.[a-z]+\/[a-z\?\&]*v[/|=]|youtu\.be\/)([0-9a-zA-Z-_]+)/g
+      const videoId = videoUrl.replace(urlPattern, '$2')
+
+      return videoId
+    },
+
+    getVideoDataType: videoUrlData => {
+      let videoUrlType
+
+      switch (true) {
+        case (typeof videoUrlData === 'string'):
+          videoUrlType = 'string'
+        break
+
+        case (Array.isArray(videoUrlData)):
+          videoUrlType = 'array'
+        break
+
+        default:
+          throw new Error('Invalid video URL data type')
+      }
+
+      return videoUrlType
+    },
+
+
+
+  /**
+    * @param {(string[]|string)} videoUrlData - The video URL or an array of URLs
     * @param {function} callback - The callback function when video is loaded
   */
-    if (yotoo.apiKey && yotoo.apiKey !== '') {
-      let videoArray = []
   get: (videoUrlData, callback) => {
 
-      if (props instanceof Array) {
-        props.forEach(item => {
-          const videoId = getVideoId(item)
+    const api = {
+      endpoint: 'https://www.googleapis.com/youtube/v3/videos',
+      part: 'id%2C+snippet%2C+contentDetails',
+      idList: '',
+    }
 
-          videoArray.push(videoId)
+    const videoUrlType = yotoo.getVideoDataType(videoUrlData)
+
+
+    if (yotoo.apiKey && yotoo.apiKey !== '') {
+      let videoIdArray = []
+
+      if (videoUrlType === 'array') {
+        Array.from(videoUrlData).forEach(item => {
+          const videoId = yotoo.getVideoIdFromUrl(item)
+
+          videoIdArray.push(videoId)
         })
       }
       else {
-        if (typeof props === 'string') {
-          const videoId = getVideoId(props)
+        if (videoUrlType === 'string') {
+          const videoId = yotoo.getVideoIdFromUrl(String(videoUrlData))
 
-          videoArray.push(videoId)
+          videoIdArray.push(videoId)
+        }
+      }
+
+      for (let index = 0; index < videoIdArray.length; index++) {
+        if (index < videoIdArray.length) {
+          api.idList += `id=${videoIdArray[index]}&`
         }
         else {
-          if (props.url instanceof Array) {
-            props.url.forEach(item => {
-              const videoId = getVideoId(item)
-
-              videoArray.push(videoId)
-            })
-          }
-          else {
-            videoUrl = props.url
-
-            const videoId = getVideoId(props.url)
-
-            videoArray.push(videoId)
-          }
-        }
-      }
-
-      const ytapi = {
-        endpoint: 'https://www.googleapis.com/youtube/v3/videos',
-        part: 'id%2C+snippet%2C+contentDetails',
-      }
-
-      // Initialize empty idList
-      ytapi.idList = ''
-
-      for (let index in videoArray) {
-        if (index < videoArray.length) {
-        } else {
-          api.idList += `id=${videoIdArray[index]}&`
           api.idList += `id=${videoIdArray[index]}`
         }
       }
 
-      function getVideoId(videoUrl) {
-        const id = videoUrl.replace(/(.*?)(?:youtube\.[a-z]+\/[a-z\?\&]*v[/|=]|youtu\.be\/)([0-9a-zA-Z-_]+)/g, '$2')
-        return id
-      }
 
       yotoo.fetch(`${api.endpoint}?part=${api.part}&${api.idList}&key=${yotoo.apiKey}`)
 
@@ -103,10 +118,6 @@ const yotoo = {
         return videoArray
       })
 
-        if (typeof props === 'object') {
-          if (props.debug === true) {
-            console.log('videoProps: ', video)
-          }
       .then(videoArray => {
         if (callback) {
           callback(videoArray)
