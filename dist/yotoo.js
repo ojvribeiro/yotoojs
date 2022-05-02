@@ -1,7 +1,7 @@
 (()=>{
 /**
   * YotooJS - YouTube Video Fetcher
-  * @version 1.2.1-alpha
+  * @version 1.2.2-alpha
   * @author Victor Ribeiro <https://github.com/ojvribeiro>
   * @licence MIT
   */
