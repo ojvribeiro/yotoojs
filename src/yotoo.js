@@ -13,9 +13,9 @@ const yotoo = {
     * @param {string|Object} props - The video URL or the options object
     * @param {function} callback - The callback function when video is loaded
   */
-  get: (props, callback) => {
     if (yotoo.apiKey && yotoo.apiKey !== '') {
       let videoArray = []
+  get: (videoUrlData, callback) => {
 
       if (props instanceof Array) {
         props.forEach(item => {
@@ -58,9 +58,9 @@ const yotoo = {
 
       for (let index in videoArray) {
         if (index < videoArray.length) {
-          ytapi.idList += `id=${videoArray[index]}&`
         } else {
-          ytapi.idList += `id=${videoArray[index]}`
+          api.idList += `id=${videoIdArray[index]}&`
+          api.idList += `id=${videoIdArray[index]}`
         }
       }
 
@@ -69,15 +69,15 @@ const yotoo = {
         return id
       }
 
-      yotoo.fetch(`${ytapi.endpoint}?part=${ytapi.part}&${ytapi.idList}&key=${yotoo.apiKey}`)
+      yotoo.fetch(`${api.endpoint}?part=${api.part}&${api.idList}&key=${yotoo.apiKey}`)
 
       // Get the video info
       .then(response => {
-        let video = []
+        let videoArray = []
         const data = response.items
 
         data.forEach(item => {
-          video.push({
+          videoArray.push({
             id: item.id,
 
             title: item.snippet.title,
@@ -100,17 +100,20 @@ const yotoo = {
           })
         })
 
-        return video
+        return videoArray
       })
 
-      .then(video => {
         if (typeof props === 'object') {
           if (props.debug === true) {
             console.log('videoProps: ', video)
           }
+      .then(videoArray => {
+        if (callback) {
+          callback(videoArray)
         }
-
-        if (callback) callback(video)
+        else {
+          throw new Error('Callback function is not defined')
+        }
       })
 
       .catch(error => {
@@ -124,9 +127,9 @@ const yotoo = {
   },
 
 
-  fetch: (url) => {
+  fetch: (apiUrl) => {
     return new Promise((resolve, reject) => {
-      fetch(url)
+      fetch(apiUrl)
       .then(response => response.json())
       .then(data => resolve(data))
       .catch(error => reject(error))
