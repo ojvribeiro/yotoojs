@@ -134,7 +134,7 @@ const yotoo = {
       })
 
       .catch(error => {
-        throw new Error('Ocorreu um erro ao carregar o vídeo: ', error)
+        throw new Error(`Ocorreu um erro ao carregar o vídeo: ${error}`)
       })
     }
     else {
