@@ -10,31 +10,42 @@ npm install yotoojs
 
 ## Usage
 
+First of all, you must set an API key.
+
 ```js
-import { yotoo } from 'yotoojs';
+yotoo.apiKey('YOUR_API_KEY')
+```
+
+You can get an API key from [Google Developers Console](https://console.developers.google.com/apis/credentials).
+
+### Fetching a single video
+
+```js
+import { yotoo } from 'yotoojs'
 
 yotoo.get(
-  // First parameter is the video URL, or an object with the `url` property or an array of URLs
   'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 
-  /*
-    // Example with multiple URLs:
-    [
-      'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      'https://www.youtube.com/watch?v=noq-ZHTD2Cg',
-      'https://www.youtube.com/watch?v=G_exsvTKXVU',
-    ],
+  response => { // The video variable contains all the information about the video
+    console.log('Videos loaded:', response)
+  }
+)
+```
 
-    // Example with an object:
-    {
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // or ['https://www.youtube.com/watch?v=dQw4w9WgXcQ']
-      debug: true,
-    },
-  */
+### Fetching multiple videos
 
-  // The second is callback function when video is loaded
-  function (video) { // The video variable contains all the information about the video
-    console.log('Videos loaded:', video)
+```js
+import { yotoo } from 'yotoojs'
+
+yotoo.get(
+  [
+    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    'https://www.youtube.com/watch?v=HyWYpM_S-2c',
+    'https://www.youtube.com/watch?v=taTTt7dH4Ig',
+  ],
+
+  response => {
+    console.log('Videos loaded:', response)
   }
 )
 ```
@@ -45,4 +56,4 @@ None. :)
 
 ## Author
 
-Victor Ribeiro (@ojvribeiro)
+Victor Ribeiro ([ojvribeiro](https://github.com/ojvribeiro))
