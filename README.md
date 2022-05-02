@@ -1,16 +1,32 @@
 # YotooJS
 
+![npm](https://img.shields.io/npm/v/yotoojs?color=d40416&style=for-the-badge)
+
 Tiny library to fetch videos from YouTube.
 
 ## Installation
+
+You can install YotooJS via npm:
 
 ```bash
 npm install yotoojs
 ```
 
-## Usage
+Or you can use it on browser via Unpkg's CDN:
 
-First of all, you must set an API key.
+```html
+<script src="https://unpkg.com/yotoojs@latest/dist/yotoo.js"></script>
+```
+
+## Setup
+
+First, import yotoo:
+
+```js
+import { yotoo } from 'yotoojs'
+```
+
+Then set an API key.
 
 ```js
 yotoo.apiKey('YOUR_API_KEY')
@@ -18,16 +34,36 @@ yotoo.apiKey('YOUR_API_KEY')
 
 You can get an API key from [Google Developers Console](https://console.developers.google.com/apis/credentials).
 
+## Examples
+
 ### Fetching a single video
 
 ```js
-import { yotoo } from 'yotoojs'
-
 yotoo.get(
   'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 
   response => {
-    console.log('Videos loaded:', response)
+    const video = response[0]
+
+    console.log(`Video title: ${video.title}`)
+  }
+)
+```
+
+### Fetching multiple videos
+
+```js
+yotoo.get(
+  [
+    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    'https://www.youtube.com/watch?v=HyWYpM_S-2c',
+    'https://www.youtube.com/watch?v=taTTt7dH4Ig',
+  ],
+
+  response => {
+    response.forEach(video => {
+      console.log(`Video title: ${video.title}`)
+    })
   }
 )
 ```
@@ -74,24 +110,6 @@ Below you can see a sample JSON response:
     "embed": "<iframe src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
   }
 ]
-```
-
-### Fetching multiple videos
-
-```js
-import { yotoo } from 'yotoojs'
-
-yotoo.get(
-  [
-    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    'https://www.youtube.com/watch?v=HyWYpM_S-2c',
-    'https://www.youtube.com/watch?v=taTTt7dH4Ig',
-  ],
-
-  response => {
-    console.log('Videos loaded:', response)
-  }
-)
 ```
 
 ## Dependencies
