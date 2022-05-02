@@ -9,7 +9,7 @@ mix
   .options({
     manifest: false,
     terser: {
-      extractComments: true,
+      extractComments: false,
 
       terserOptions: {
         mangle: false,

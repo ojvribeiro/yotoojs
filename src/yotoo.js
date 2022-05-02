@@ -2,7 +2,7 @@
 
 /**
   * YotooJS - YouTube Video Fetcher
-  * @version 1.1.2
+  * @version 1.2.1-alpha
   * @author Victor Ribeiro <https://github.com/ojvribeiro>
   * @licence MIT
   */
