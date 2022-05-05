@@ -29,8 +29,10 @@ import { yotoo } from 'yotoojs'
 Then set an API key.
 
 ```js
-yotoo.apiKey('YOUR_API_KEY')
+yotoo.setApiKey('YOUR_API_KEY')
 ```
+
+> :warning: **Important**: the previous method `yotoo.apiKey()` is deprecated. Use `yotoo.setApiKey()` instead.
 
 You can get an API key from [Google Developers Console](https://console.developers.google.com/apis/credentials).
 

@@ -2,13 +2,19 @@
 
 /**
   * YotooJS - YouTube Video Fetcher
-  * @version 1.2.21-alpha
+  * @version 1.3.0-alpha
   * @author Victor Ribeiro <https://github.com/ojvribeiro>
   * @licence MIT
   */
 
 
 const yotoo = {
+
+  setApiKey: (key) => {
+    if (key) {
+      yotoo.apiKey = key;
+    }
+  },
 
   /**
     * @param {string} videoUrl - The video URL
