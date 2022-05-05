@@ -10,6 +10,12 @@
 
 const yotoo = {
 
+  setApiKey: (key) => {
+    if (key) {
+      yotoo.apiKey = key;
+    }
+  },
+
   /**
     * @param {string} videoUrl - The video URL
     */
