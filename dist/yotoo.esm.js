@@ -1,6 +1,6 @@
 /**
   * YotooJS - YouTube Video Fetcher
-  * @version 1.3.0-alpha
+  * @version 1.3.1-alpha
   * @author Victor Ribeiro <https://github.com/ojvribeiro>
   * @licence MIT
   */
